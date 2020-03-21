@@ -18,8 +18,8 @@ class UsersTableSeeder extends Seeder
             'role_id' => '1',
             'name' => 'Super Admin',
             'username' => 'superadmin',
-            'email' => 'mishajib222@gmail.com',
-            'password' => bcrypt('i am back'),
+            'email' => 'superadmin@admin.com',
+            'password' => bcrypt('superadmin'),
         ]);
 
         DB::table('users')->insert([
