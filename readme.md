@@ -1,4 +1,7 @@
 # Laravel Simple Blog Application
+
+## Instruction for Setup Application Locally
+
 ## Windows users:
 - Download xampp: https://www.apachefriends.org/index.html
 - Update windows environment variable path to point to your php install folder (inside xampp installation dir) (here is how you can do this http://stackoverflow.com/questions/17727436/how-to-properly-set-php-environment-variable-to-run-commands-in-git-bash)
