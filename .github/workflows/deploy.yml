@@ -18,5 +18,9 @@ jobs:
           key: ${{ secrets.C_SSH_KEY }}
           passphrase: ${{ secrets.C_SSH_PASSWORD }}
           script: |
-            cd public_html/
-            pwd
+            cd public_html/minty/
+            php artisan down
+            git pull origin master
+            composer install -vvv
+            php artisan o:c
+            php artisan up
