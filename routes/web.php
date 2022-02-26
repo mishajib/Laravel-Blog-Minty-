@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\View;
 
 Route::get('/','HomeController@index')->name('home');
 
-Route::post('subscriber', 'SubscriberController@store')->name('subscriber.store');
+Route::post('subscriber', 'SubscriberController@store')->name('subscriber.store')->middleware('demo_mode');
 
 Route::get('post/{slug}', 'PostController@details')->name('post.details');
 
@@ -36,7 +36,7 @@ Auth::routes();
 
 
 //These are all for Admin dashboard routes and here defined file directory , prefix , namespace, middleware as default
-Route::group(['as'=>'admin.','prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['auth', 'admin']], function() {
+Route::group(['as'=>'admin.','prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['auth', 'admin', 'demo_mode']], function() {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     Route::resource('tag', 'TagController');
     Route::resource('category', 'CategoryController');
@@ -70,7 +70,7 @@ Route::group(['as'=>'admin.','prefix'=>'admin', 'namespace'=>'Admin', 'middlewar
 
 
 //These are all for Author dashboard routes and here defined file directory , prefix , namespace, middleware as default
-Route::group(['as'=>'author.','prefix'=>'author', 'namespace'=>'Author', 'middleware'=>['auth', 'author']], function() {
+Route::group(['as'=>'author.','prefix'=>'author', 'namespace'=>'Author', 'middleware'=>['auth', 'author', 'demo_mode']], function() {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     Route::resource('post', 'PostController');
 
@@ -87,7 +87,7 @@ Route::group(['as'=>'author.','prefix'=>'author', 'namespace'=>'Author', 'middle
 });
 
 
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth', 'demo_mode']], function() {
     Route::post('favourite/{post}/add', 'FavouriteController@addFav')->name('post.favourite');
     Route::post('comment/{post}', 'CommentController@store')->name('comment.store');
 });
